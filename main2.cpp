@@ -14,4 +14,5 @@ int main(int argc, char* argv[]) {
     setvalue(map, &i, sizeof(int));
 
     cout << *(int*)getvalue(map);
+
 }
