@@ -1,18 +1,16 @@
 #include <iostream>
-#include <stdlib.h>
 #include <string.h>
-#include "include/gn_map.h"
+
+#include "project/linkedlist.h"
 
 using namespace std;
 
-typedef gn_map GMap;
+typedef ListNode Node;
 
 int main(int argc, char* argv[]) {
-
-    int i=10;
-    GMap *map = new GMap("next");
-    setvalue(map, &i, sizeof(int));
-
-    cout << *(int*)getvalue(map);
-
+    Node *list=NULL;
+    for(int i=0; i<5; i++) {
+        push(&list,i);
+    }
 }
+
