@@ -15,7 +15,7 @@ struct S {
 
 int main() {
 	Node node;
-	setType(&node, CUSTOM);
+	define(&node, CUSTOM);
 
-	cout << node.type;
+	cout << getAttrCount(node);
 }

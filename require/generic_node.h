@@ -17,7 +17,7 @@ enum TYPE {BOOL=1,CHAR=1,INT=4};
 	 
 	 * meta : double pointer to hold references to meta-data;
 	 	index	desc
-	 	 0		number of properties
+	 	 0		number of attributes
 	 
 	 * properties : double pointer to hold references to properties of data. to be used while structuring multiple nodes
 */
@@ -26,7 +26,7 @@ struct generic_node {
 	TYPE type;
 	
 	void **meta;
-	void **properties;
+	void **attr;
 };
 
 /*initilizes a node according to type
@@ -39,17 +39,30 @@ void setType(generic_node*, TYPE);
 	param2: sizeof data for custom datatypes*/
 void setType(generic_node*, int);
 
+
+
+
 /*initilizes a node according to type
 	param1: referebce to node
 	param2: datatype for node
-	param3: number of properties */
-void define(generic_node*, TYPE, int);
+	param3: number of attr */
+void define(generic_node*, TYPE);
 
 /*initilizes a node according to type
 	param1: referebce to node
 	param2: size to reserve for node data
-	param3: number of properties */
-void define(generic_node*, int, int);
+	param3: number of attr */
+void define(generic_node*, int);
+
+/* return number of attrs 
+	param1: reference to node */
+int getAttrCount(generic_node); 
+
+/* reserves a space for new property*/
+void addAttr(generic_node*);
+
+
+
 
 
 
@@ -64,16 +77,20 @@ void setType(generic_node* node, int size) {
 	node->type = (TYPE)size;
 }/**/
 
-void define(generic_node* node, int type, int numofproperties) {
+void define(generic_node* node, int type) {
 	node->data = NULL;
 	setType(node,type);
 	
 	node->meta = (void**)malloc(sizeof(void*));
-	node->properties = (void**)malloc(sizeof(void*)*numofproperties);
+	node->attr = (void**)malloc(sizeof(void*));
 	
 	node->meta[0] = malloc(sizeof(int));
-	*(int*)(node->meta[0]) = numofproperties;
+	*(int*)(node->meta[0]) = 1;
 	
+}/**/
+
+int getAttrCount(generic_node node) {
+	return *(int*)node.meta[0];
 }/**/
 
 #endif
