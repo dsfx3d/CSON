@@ -15,7 +15,6 @@ struct S {
 
 int main() {
 	Node node;
-	define(&node, CUSTOM);
-
-	cout << getAttrCount(node);
+	define(&node, (int)INT);
+//	setString(&node, "wtf");	
 }
