@@ -1,7 +1,6 @@
 #ifndef GENERIC_NODE
 #define GENERIC_NODE
 
-#include "utility.h"
 //#include <stdlib.h>
 
 /*                                                     .
