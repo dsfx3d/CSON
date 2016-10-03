@@ -13,6 +13,4 @@ struct generic_node {
 //generic_node
 void define(int,int);
 
-
-/**-------------------------------------------------------------------------------**/
 #endif
